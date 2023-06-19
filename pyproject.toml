@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "hwfwm"
+version = "0.1.0"
+description = "test project exploring postgress and apis using skill mechanicas from hwfwm"
+authors = ["jaredwil24 <jwilson@spear.ai>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

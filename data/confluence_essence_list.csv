@@ -6,9 +6,9 @@ Rune,Spider,Trap,Ambush,FALSE
 Earth,Spike,Trap,Ambush,FALSE
 Fire,Spider,Trap,Ambush,FALSE
 Dance,Knowledge,Mirror,Animate,FALSE
-Fungus,Growth,Zeal,Animate,FALSE
+Fungus,Growth,Zeal,Animate,TRUE
 Dance,Dust,Echo,Animate,FALSE
-Bone,Death,Magic,Animate,FALSE
+Bone,Death,Magic,Animate,TRUE
 Cloth,Dance,Magic,Animate,FALSE
 Bird,Cat,Vast,Anzu,FALSE
 Myriad,Shield,Sword,Arsenal,FALSE

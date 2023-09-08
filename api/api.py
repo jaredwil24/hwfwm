@@ -30,14 +30,39 @@ class Confluence:
 @strawberry.type
 class Query:
     @strawberry.field
-    async def essence(self, info, index: int) -> Essence:
-        return await loader.load(index)
+    async def essence(self, info, keyword: str) -> Essence:
+        return await get_essence_by_name(keyword)
 
     @strawberry.field
     async def essence_list(self, info) -> typing.List[Essence]:
         return conn.execute(
             essences.__table__.select()
         ).fetchall()
+    
+    @strawberry.field
+    async def get_confluence(self, info, essence1: str, essence2: str, essence3: str
+    ) -> Confluence:
+        confluence_row = conn.execute(
+            confluence.__table__.select().where(
+                confluence.__table__.c.essence1 == essence1,
+                confluence.__table__.c.essence2 == essence2,
+                confluence.__table__.c.essence3 == essence3,
+                )
+            ).fetchone()
+        
+        if confluence_row is None:
+            # Handle the case where the confluence is not found
+            return None
+        
+        confluence_obj = Confluence(
+            essence1=await get_essence_by_name(confluence_row.essence1),
+            essence2=await get_essence_by_name(confluence_row.essence2),
+            essence3=await get_essence_by_name(confluence_row.essence3),
+            confluence=confluence_row.confluence,
+            restricted=confluence_row.restricted,
+        )
+        
+        return confluence_obj
     
 # fields for confluence essences
     @strawberry.field
